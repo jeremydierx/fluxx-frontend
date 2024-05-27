@@ -1,3 +1,5 @@
+![Fluxx Frontend par Code Alchimie](./public/img/fluxx-frontend.png)
+
 # Fluxx Frontend
 
 Ce projet est une application web de type Single Page Application (SPA) développée avec Svelte et Vite. Il sert de base de départ pour la réalisation d’applications SPA.
@@ -122,4 +124,67 @@ $ npm run remoteMaintenanceOffProd # Désactiver le mode maintenance
 - **Personnalisation Difficile** : La personnalisation ou l'extension des fonctionnalités d'un framework tout-en-un peut être difficile ou impossible sans recourir à des hacks ou des contournements, ce qui peut nuire à la maintenabilité du code.
 - **Contraintes architecturales** : Ces frameworks imposent souvent une architecture et une structure spécifiques, limitant la capacité des développeurs à adapter l'application à des besoins uniques ou à adopter des meilleures pratiques qui sortent du cadre défini par le framework.
 
-![Fluxx Backend par Code Alchimie](./public/img/logo.png)
+## Le principe KIS (Keep It Simple)
+
+Le principe **KIS (Keep It Simple)** prône la simplicité et l'absence de complexité inutile dans le développement et la conception. En privilégiant des solutions directes et faciles à comprendre, ce principe facilite la maintenance, réduit les erreurs et améliore l'efficacité. En se concentrant sur l'essentiel et en éliminant les éléments superflus, **KIS** permet de créer des systèmes plus robustes, plus accessibles et plus rapides à mettre en œuvre. Adopter **KIS** aide les équipes à rester agiles, à réduire les coûts et à livrer des produits de qualité supérieure en évitant les complications inutiles.
+
+### Éviter la programmation orientée objet (POO)
+
+Préférez les fonctions et les structures de données simples aux classes et objets complexes pour réduire la complexité du code.
+
+### Utiliser JSDOC à la place de TypeScript
+
+Documentez votre code JavaScript avec JSDoc pour bénéficier de l'auto-complétion et de la vérification des types, sans la complexité supplémentaire de TypeScript.
+
+### Privilégier les solutions simples
+
+Choisissez toujours la solution la plus simple et directe pour résoudre un problème, même si elle semble moins élégante ou moins sophistiquée.
+
+### Éviter les abstractions inutiles
+
+Limitez l'utilisation des abstractions (comme les interfaces, les frameworks complexes) qui peuvent rendre le code plus difficile à comprendre et à maintenir.
+
+### Utiliser des noms de variables et de fonctions explicites
+
+Choisissez des noms clairs et significatifs pour vos variables et fonctions afin de rendre le code auto-documenté.
+
+### Diviser le code en petites fonctions
+
+Écrivez des fonctions courtes et spécifiques qui effectuent une seule tâche, ce qui facilite la compréhension et la maintenance.
+
+### Minimiser les dépendances
+
+Réduisez le nombre de bibliothèques et de frameworks externes pour limiter les points de défaillance et simplifier la gestion des mises à jour.
+
+### Favoriser la composition plutôt que l'héritage
+
+Utilisez la composition de fonctions et de modules au lieu de l'héritage pour structurer votre code, ce qui permet de réutiliser et de tester plus facilement les composants.
+
+### Écrire des tests simples et clairs
+
+Rédigez des tests unitaires et d'intégration qui sont faciles à comprendre et à maintenir, couvrant les cas d'utilisation principaux sans surcharger le projet.
+
+### Limiter les commentaires
+
+Évitez de commenter chaque ligne de code. Utilisez des commentaires uniquement lorsque cela est nécessaire pour expliquer des choix non évidents.
+
+### Utiliser des outils de linters
+
+Employez des outils de linting comme ESLint pour automatiser la vérification de la qualité et la cohérence du code.
+
+### Suivre les conventions de code
+
+Adoptez et respectez des conventions de codage claires et bien définies pour maintenir un code cohérent et lisible par tous les membres de l'équipe.
+
+### Éviter les optimisations prématurées
+
+Ne vous concentrez pas sur l'optimisation du code avant de vérifier qu'il y a effectivement un problème de performance. Priorisez la simplicité et la clarté.
+
+### Favoriser l'utilisation de l'outillage standard
+
+Utilisez les fonctionnalités natives du langage et des environnements de développement avant de recourir à des solutions externes ou sur-mesure.
+
+### Conclusion
+En suivant ces principes **KIS**, vous pourrez créer des systèmes plus simples, plus robustes et plus faciles à maintenir, tout en réduisant les coûts et le temps de développement.
+
+![Code Alchimie](./public/img/logo.png)

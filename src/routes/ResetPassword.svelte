@@ -1,41 +1,38 @@
 <script>
 
   /**
-   * Composant de la page de connexion.
+   * Composant de la page de réinitialisation du mot de passe.
    *
-   * @module SignIn
+   * @module ResetPassword
    *
-   * @requires ../lib/backend - Pour l'interaction avec le backend.
    * @requires svelte-spa-router - Pour le routage de l'application.
+   * @requires ../lib/backend - Pour l'interaction avec le backend.
    * @requires ../lib/store - Pour l'accès au store de l'application.
    * @requires ../components/Spinner.svelte - Composant pour l'affichage d'un spinner de chargement.
    *
-   * @property {Object} credentials - Les informations d'identification de l'utilisateur.
-   * @property {string} credentials.email - L'email de l'utilisateur.
-   * @property {string} credentials.password - Le mot de passe de l'utilisateur.
-   * @property {string} credentials.authMethod - La méthode d'authentification.
+   * @property {Object} params - Les paramètres de la route.
+   * @property {string} newPassword - Le nouveau mot de passe de l'utilisateur.
    * @property {boolean} isLoading - Indique si une requête est en cours.
    *
-   * @function handleOnSubmit - Gère la soumission du formulaire de connexion.
+   * @function handleOnSubmit - Gère la soumission du formulaire de réinitialisation du mot de passe.
    */
 
-  import { signIn } from '../lib/backend'
   import { replace } from 'svelte-spa-router'
-  import { userAuthState } from '../lib/store'
   import Spinner from '../components/Spinner.svelte'
+  import { userAuthState } from '../lib/store'
+  import { resetPassword } from '../lib/backend'
 
-  const credentials = {
-    email: '',
-    password: '',
-    authMethod: 'emailAuth'
-  }
+  export let params = {}
+
+  let newPassword = ''
+
   const isLoading = false
 
   if (userAuthState.isAuth) replace('/admin')
 
   async function handleOnSubmit () {
-    await signIn(credentials)
-    replace('/admin')
+    await resetPassword(newPassword, params.token)
+    replace('/sign-in')
   }
 
 </script>
@@ -89,7 +86,7 @@
     }
   }
 
-  .askResetPassword {
+  .cancel {
     margin-top: 20px;
     text-align: center;
     a {
@@ -105,22 +102,19 @@
   <form on:submit|preventDefault={handleOnSubmit}>
 
     <div class="input">
-      <input type="email" id="email" placeholder="Email" bind:value={credentials.email} required>
-    </div>
-
-    <div class="input">
-      <input type="password" id="password" placeholder="Mot de passe" bind:value={credentials.password} required>
+      <input type="password" id="password" placeholder="Nouveau mot de passe" minlength="8" bind:value={newPassword} required>
     </div>
 
     <div class="btn">
-      <input type="submit" disabled={isLoading ? 'disabled' : ''} value="ENTRER"/>
+      <input type="submit" disabled={isLoading ? 'disabled' : ''} value="VALIDER"/>
       <Spinner class="spinner"/>
     </div>
 
-    <div class="askResetPassword">
-      <a href="/#/ask-reset-password">Mot de passe oublié ?</a>
+    <div class="cancel">
+      <a href="/#/sign-in">Annuler</a>
     </div>
 
   </form>
 
 </div>
+

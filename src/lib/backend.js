@@ -144,3 +144,65 @@ export const signIn = async function (credentials) {
   isLoading.set(false)
   return data
 }
+
+/**
+ * Envoie une requête POST pour demander la réinitialisation du mot de passe
+ * d'un utilisateur. Cette fonction prend en entrée l'email de l'utilisateur,
+ * puis envoie une requête POST à l'API backend. Si la requête est réussie,
+ * un email est envoyé à l'utilisateur avec un lien pour réinitialiser son mot
+ * de passe.
+ *
+ * @async
+ * @function askResetPassword
+ * @param {string} email - L'email de l'utilisateur.
+ * @returns {Promise<Object>} Les données de la réponse, qui peuvent inclure
+ * des informations de succès ou des informations d'erreur.
+ */
+export const askResetPassword = async function (email) {
+  isLoading.set(true)
+  const headers = new Headers({
+    'Content-Type': 'application/json'
+  })
+
+  const res = await fetch(`${getAppConfig.backendApi}/users/askResetPassword`, {
+    method: 'POST',
+    headers,
+    mode: 'cors',
+    body: JSON.stringify({ email })
+  })
+  const data = await res.json()
+  setErrorIfExists(data)
+  isLoading.set(false)
+  return data
+}
+
+/**
+ * Envoie une requête POST pour réinitialiser le mot de passe d'un utilisateur.
+ * Cette fonction prend en entrée le nouveau mot de passe de l'utilisateur et
+ * le token de réinitialisation, puis envoie une requête POST à l'API backend.
+ * Si la requête est réussie, le mot de passe de l'utilisateur est réinitialisé.
+ *
+ * @async
+ * @function resetPassword
+ * @param {string} password - Le nouveau mot de passe de l'utilisateur.
+ * @param {string} token - Le token de réinitialisation du mot de passe.
+ * @returns {Promise<Object>} Les données de la réponse, qui peuvent inclure
+ * des informations de succès ou des informations d'erreur.
+ */
+export const resetPassword = async function (password, token) {
+  isLoading.set(true)
+  const headers = new Headers({
+    'Content-Type': 'application/json'
+  })
+
+  const res = await fetch(`${getAppConfig.backendApi}/users/resetPassword`, {
+    method: 'PUT',
+    headers,
+    mode: 'cors',
+    body: JSON.stringify({ password, token })
+  })
+  const data = await res.json()
+  setErrorIfExists(data)
+  isLoading.set(false)
+  return data
+}

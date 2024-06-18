@@ -1,41 +1,30 @@
 <script>
 
   /**
-   * Composant de la page de connexion.
+   * Composant de la page de demande de réinitialisation du mot de passe.
    *
-   * @module SignIn
+   * @module AskResetPassword
    *
    * @requires ../lib/backend - Pour l'interaction avec le backend.
    * @requires svelte-spa-router - Pour le routage de l'application.
-   * @requires ../lib/store - Pour l'accès au store de l'application.
    * @requires ../components/Spinner.svelte - Composant pour l'affichage d'un spinner de chargement.
    *
-   * @property {Object} credentials - Les informations d'identification de l'utilisateur.
-   * @property {string} credentials.email - L'email de l'utilisateur.
-   * @property {string} credentials.password - Le mot de passe de l'utilisateur.
-   * @property {string} credentials.authMethod - La méthode d'authentification.
+   * @property {string} email - L'email de l'utilisateur.
    * @property {boolean} isLoading - Indique si une requête est en cours.
    *
-   * @function handleOnSubmit - Gère la soumission du formulaire de connexion.
+   * @function handleOnSubmit - Gère la soumission du formulaire de demande de réinitialisation du mot de passe.
    */
 
-  import { signIn } from '../lib/backend'
-  import { replace } from 'svelte-spa-router'
-  import { userAuthState } from '../lib/store'
   import Spinner from '../components/Spinner.svelte'
+  import { replace } from 'svelte-spa-router'
+  import { askResetPassword } from '../lib/backend'
 
-  const credentials = {
-    email: '',
-    password: '',
-    authMethod: 'emailAuth'
-  }
+  let email = ''
   const isLoading = false
 
-  if (userAuthState.isAuth) replace('/admin')
-
   async function handleOnSubmit () {
-    await signIn(credentials)
-    replace('/admin')
+    await askResetPassword(email)
+    replace('/sign-in')
   }
 
 </script>
@@ -89,7 +78,7 @@
     }
   }
 
-  .askResetPassword {
+  .cancel {
     margin-top: 20px;
     text-align: center;
     a {
@@ -105,20 +94,16 @@
   <form on:submit|preventDefault={handleOnSubmit}>
 
     <div class="input">
-      <input type="email" id="email" placeholder="Email" bind:value={credentials.email} required>
-    </div>
-
-    <div class="input">
-      <input type="password" id="password" placeholder="Mot de passe" bind:value={credentials.password} required>
+      <input type="email" id="email" placeholder="Email" bind:value={email} required>
     </div>
 
     <div class="btn">
-      <input type="submit" disabled={isLoading ? 'disabled' : ''} value="ENTRER"/>
+      <input type="submit" disabled={isLoading ? 'disabled' : ''} value="MOT DE PASSE OUBLIÉ"/>
       <Spinner class="spinner"/>
     </div>
 
-    <div class="askResetPassword">
-      <a href="/#/ask-reset-password">Mot de passe oublié ?</a>
+    <div class="cancel">
+      <a href="/#/sign-in">Annuler</a>
     </div>
 
   </form>

@@ -14,6 +14,8 @@
    * @requires ./routes/admin/Home.svelte - Composant de la page d'accueil de l'admin.
    * @requires ./lib/backend - Pour l'interaction avec le backend.
    * @requires ./routes/SignIn.svelte - Composant de la page de connexion.
+   * @requires ./routes/AskResetPassword.svelte - Composant de la page de demande de réinitialisation de mot de passe.
+   * @requires ./routes/ResetPassword.svelte - Composant de la page de réinitialisation de mot de passe.
    * @requires svelte - Pour l'utilisation des hooks de cycle de vie de Svelte.
    *
    * @property {Object} appConfig - Configuration de l'application.
@@ -33,6 +35,8 @@
   import Router, { replace } from 'svelte-spa-router'
   import { wrap } from 'svelte-spa-router/wrap'
   import Home from './routes/Home.svelte'
+  import AskResetPassword from './routes/AskResetPassword.svelte'
+  import ResetPassword from './routes/ResetPassword.svelte'
   import Error from './components/Error.svelte'
   import Success from './components/Success.svelte'
   import {
@@ -93,6 +97,12 @@
      }),
      '/sign-in': wrap({
        component: SignIn
+     }),
+     '/ask-reset-password': wrap({
+       component: AskResetPassword
+     }),
+     '/reset-password/:token': wrap({
+       component: ResetPassword
      })
    }
 

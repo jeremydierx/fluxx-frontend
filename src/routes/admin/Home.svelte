@@ -9,12 +9,12 @@
    *
    */
 
-  import { signOut } from '../../lib/helpers'
+  import Menu from '../../components/admin/Menu.svelte'
 </script>
 
 <style lang="scss">
 
 </style>
-
+<Menu />
 <h1>Admin home</h1>
-<p><a on:click|preventDefault={signOut} href="/">Deconnexion</a></p>
+

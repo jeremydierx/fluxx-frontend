@@ -206,3 +206,22 @@ export const resetPassword = async function (password, token) {
   isLoading.set(false)
   return data
 }
+
+/**
+ * Récupère les informations d'un utilisateur spécifique à partir de l'API backend.
+ * Envoie une requête GET à l'API backend pour obtenir les informations de l'utilisateur.
+ *
+ * @async
+ * @function getUser
+ * @param {string} id - L'ID de l'utilisateur à récupérer.
+ * @returns {Promise<Object>} Les données renvoyées par l'API backend.
+ * @throws {Error} Si une erreur se produit lors de la récupération des données.
+ */
+export const getUser = async function (id) {
+  isLoading.set(true)
+  const options = getRequestOptions('GET', true)
+  const res = await window.fetch(`${getAppConfig.backendApi}/users/${id}`, options)
+  const data = await res.json()
+  isLoading.set(false)
+  return data
+}

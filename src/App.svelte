@@ -34,9 +34,6 @@
 
   import Router, { replace } from 'svelte-spa-router'
   import { wrap } from 'svelte-spa-router/wrap'
-  import Home from './routes/Home.svelte'
-  import AskResetPassword from './routes/AskResetPassword.svelte'
-  import ResetPassword from './routes/ResetPassword.svelte'
   import Error from './components/Error.svelte'
   import Success from './components/Success.svelte'
   import {
@@ -44,13 +41,17 @@
     userAuthState
   } from './lib/store'
   import config from './config'
-  import AdminHome from './routes/admin/Home.svelte'
   import {
     userAuthInit,
     getRefreshToken
   } from './lib/backend'
-  import SignIn from './routes/SignIn.svelte'
   import { onDestroy } from 'svelte'
+  import Home from './routes/Home.svelte'
+  import AskResetPassword from './routes/AskResetPassword.svelte'
+  import ResetPassword from './routes/ResetPassword.svelte'
+  import SignIn from './routes/SignIn.svelte'
+  import AdminHome from './routes/admin/Home.svelte'
+  import AdminMyAccount from './routes/admin/MyAccount.svelte'
 
   /**
    * CONFIG
@@ -82,31 +83,40 @@
    * ROUTES
    */
 
-   const routes = {
-     '/': wrap({
-       component: Home
-     }),
-     '/admin': wrap({
-       component: AdminHome,
-       conditions: [
-         async () => {
-           if (!$userAuthState.isAuth) await userAuthInit()
-           return onlyAdmin
-         }
-       ]
-     }),
-     '/sign-in': wrap({
-       component: SignIn
-     }),
-     '/ask-reset-password': wrap({
-       component: AskResetPassword
-     }),
-     '/reset-password/:token': wrap({
-       component: ResetPassword
-     })
-   }
+  const routes = {
+    '/': wrap({
+      component: Home
+    }),
+    '/admin': wrap({
+      component: AdminHome,
+      conditions: [
+        async () => {
+          if (!$userAuthState.isAuth) await userAuthInit()
+          return onlyAdmin
+        }
+      ]
+    }),
+    '/admin/my-account': wrap({
+      component: AdminMyAccount,
+      conditions: [
+        async () => {
+          if (!$userAuthState.isAuth) await userAuthInit()
+          return onlyAdmin
+        }
+      ]
+    }),
+    '/sign-in': wrap({
+      component: SignIn
+    }),
+    '/ask-reset-password': wrap({
+      component: AskResetPassword
+    }),
+    '/reset-password/:token': wrap({
+      component: ResetPassword
+    })
+  }
 
-   /**
+  /**
    * CONTRÔLE D’ACCÈS
    */
 

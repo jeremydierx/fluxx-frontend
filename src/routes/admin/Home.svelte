@@ -9,12 +9,9 @@
    *
    */
 
-  import Menu from '../../components/admin/Menu.svelte'
 </script>
 
 <style lang="scss">
 
 </style>
-<Menu />
 <h1>Admin home</h1>
-

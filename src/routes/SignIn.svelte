@@ -29,11 +29,12 @@
     password: '',
     authMethod: 'emailAuth'
   }
-  const isLoading = false
+  let isLoading = false
 
   if (userAuthState.isAuth) replace('/admin')
 
   async function handleOnSubmit () {
+    isLoading = true
     await signIn(credentials)
     replace('/admin')
   }

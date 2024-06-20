@@ -17,4 +17,4 @@
 </style>
 
 <h1>Home</h1>
-<p><a href="/#/admin">Administration</a></p>
+

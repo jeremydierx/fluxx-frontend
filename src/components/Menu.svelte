@@ -1,7 +1,7 @@
 <script>
 
-  import { signOut } from '../../lib/helpers'
-  import { userAuthState } from '../../lib/store'
+  import { signOut } from '../lib/helpers'
+  import { userAuthState } from '../lib/store'
 
 </script>
 
@@ -16,6 +16,6 @@
     <li><a on:click|preventDefault={signOut} href="/">Deconnexion</a></li>
   {:else}
   <li><a href="/">Accueil</a></li>
-    <li><a href="/sign-in">Connexion</a></li>
+    <li><a href="/#/sign-in">Connexion</a></li>
   {/if}
 </ul>

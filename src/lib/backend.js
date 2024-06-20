@@ -17,6 +17,7 @@ import {
 import {
   appConfig,
   mainError,
+  mainSuccess,
   isLoading,
   userAuthState
 } from './store'
@@ -47,6 +48,25 @@ function setErrorIfExists (data) {
         message: `Erreur : ${data.message}`
       })
     }
+  }
+}
+
+/**
+ * Vérifie si une erreur existe dans les données reçues. Si aucune erreur n'est
+ * présente, la fonction met à jour le store mainSuccess avec un état de succès
+ * et le message reçu.
+ *
+ * @function setSuccessIfExists
+ * @param {Object} data - Les données reçues de la réponse du backend.
+ * @param {string} data.error - L'erreur éventuelle reçue du backend.
+ * @param {string} data.message - Le message reçu du backend.
+ */
+function setSuccessIfExists (data) {
+  if (!data.error) {
+    mainSuccess.set({
+      success: true,
+      message: data.message
+    })
   }
 }
 
@@ -222,6 +242,23 @@ export const getUser = async function (id) {
   const options = getRequestOptions('GET', true)
   const res = await window.fetch(`${getAppConfig.backendApi}/users/${id}`, options)
   const data = await res.json()
+  isLoading.set(false)
+  return data
+}
+
+// modification d’un utilisateur au backend pour modification
+export const updateUser = async function (user, sendPasswordByEmail = false) {
+  isLoading.set(true)
+  const options = getRequestOptions('PUT', true)
+  options.body = JSON.stringify({
+    user,
+    sendPasswordByEmail
+  })
+  const res = await fetch(`${getAppConfig.backendApi}/users/${user.id}`, options)
+  const data = await res.json()
+  setErrorIfExists(data)
+  setSuccessIfExists(data)
+  if (data.statusCode === 401) signOut()
   isLoading.set(false)
   return data
 }

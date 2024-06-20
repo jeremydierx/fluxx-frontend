@@ -46,6 +46,7 @@
     getRefreshToken
   } from './lib/backend'
   import { onDestroy } from 'svelte'
+  import Menu from './components/Menu.svelte'
   import Home from './routes/Home.svelte'
   import AskResetPassword from './routes/AskResetPassword.svelte'
   import ResetPassword from './routes/ResetPassword.svelte'
@@ -136,11 +137,18 @@
 
   @import './style/variables';
 
+  .content {
+    padding: 20px;
+  }
+
 </style>
 
 <div class="content">
   <Error/>
   <Success/>
+  <header>
+    <Menu />
+  </header>
   <main>
     <Router {routes} on:conditionsFailed={conditionsFailed}/>
   </main>

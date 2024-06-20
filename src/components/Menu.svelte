@@ -18,15 +18,27 @@
 
 <style lang="scss">
 
+  @import '../style/variables';
+
+  [class^="icon-"] {
+    margin-right: 5px;
+  }
+
+  li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
 </style>
 <h1>Menu</h1>
 <ul>
   {#if $userAuthState.isAuth }
-    <li><a href="/#/admin">Accueil</a></li>
-    <li><a href="/#/admin/my-account">Mon compte</a></li>
-    <li><a on:click|preventDefault={signOut} href="/">Deconnexion</a></li>
+    <li><span class="icon-house-door"></span><a href="/#/admin">Accueil</a></li>
+    <li><span class="icon-person"></span><a href="/#/admin/my-account">Mon compte</a></li>
+    <li><span class="icon-power"></span><a on:click|preventDefault={signOut} href="/">Deconnexion</a></li>
   {:else}
-  <li><a href="/">Accueil</a></li>
-    <li><a href="/#/sign-in">Connexion</a></li>
+  <li><span class="icon-house-door"></span><a href="/">Accueil</a></li>
+    <li><span class="icon-power"></span><a href="/#/sign-in">Connexion</a></li>
   {/if}
 </ul>

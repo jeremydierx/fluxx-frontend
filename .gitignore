@@ -131,9 +131,6 @@ package-lock.json
 config.js
 vite.config.js
 
-# Documentation
-docs
-
 # Script de déploiement
 remoteDeploy.sh
 

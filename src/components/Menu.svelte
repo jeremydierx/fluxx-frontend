@@ -1,5 +1,16 @@
 <script>
 
+  /**
+   * Composant du menu de navigation.
+   *
+   * @module Menu
+   *
+   * @requires ../lib/helpers - Pour l'accès à la fonction signOut.
+   * @requires ../lib/store - Pour l'accès au store de l'application.
+   *
+   * @property {Object} userAuthState - Le store d'authentification de l'utilisateur.
+   */
+
   import { signOut } from '../lib/helpers'
   import { userAuthState } from '../lib/store'
 

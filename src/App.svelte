@@ -25,11 +25,15 @@
    * @function userAuthInit - Initialise l'authentification de l'utilisateur.
    * @function getRefreshToken - Obtient le token de rafraîchissement.
    *
+   * @component Menu - Composant du menu de navigation.
    * @component Home - Composant de la page d'accueil.
+   * @component SignIn - Composant de la page de connexion.
+   * @component AskResetPassword - Composant de la page de demande de réinitialisation de mot de passe.
+   * @component ResetPassword - Composant de la page de réinitialisation de mot de passe.
+   * @component AdminMyAccount - Composant de la page de gestion du compte de l'admin.
+   * @component AdminHome - Composant de la page d'accueil de l'admin.
    * @component Error - Composant pour l'affichage des erreurs.
    * @component Success - Composant pour l'affichage des succès.
-   * @component AdminHome - Composant de la page d'accueil de l'admin.
-   * @component SignIn - Composant de la page de connexion.
    */
 
   import Router, { replace } from 'svelte-spa-router'

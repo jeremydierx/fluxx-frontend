@@ -1,5 +1,21 @@
 <script>
 
+  /**
+   * Composant de la page Mon compte.
+   *
+   * @module MyAccount
+   *
+   * @requires ../../lib/store - Pour l'accès au store de l'application.
+   * @requires ../../lib/backend - Pour l'interaction avec le backend.
+   * @requires svelte - Pour l'utilisation des hooks de cycle de vie de Svelte.
+   * @requires ../../components/Spinner.svelte - Composant pour l'affichage d'un spinner de chargement.
+   *
+   * @property {Object} user - Les informations de l'utilisateur.
+   * @property {boolean} isLoading - Indique si une requête est en cours.
+   *
+   * @function getMyAccount - Récupère les informations du compte de l'utilisateur actuellement authentifié.
+   */
+
   import { userAuthState } from '../../lib/store'
   import {
     getUser,
@@ -19,16 +35,6 @@
   }
   let isLoading = false
 
-  /**
- * Récupère les informations du compte de l'utilisateur actuellement authentifié.
- * Utilise la fonction getUser pour obtenir les informations de l'utilisateur à partir de l'API backend.
- * Met à jour l'état de l'utilisateur si aucune erreur n'est renvoyée.
- *
- * @async
- * @function getMyAccount
- * @returns {Promise<void>} Ne renvoie rien.
- * @throws {Error} Si une erreur se produit lors de la récupération des données.
- */
   async function getMyAccount () {
     isLoading = true
     const data = await getUser($userAuthState.user.id)

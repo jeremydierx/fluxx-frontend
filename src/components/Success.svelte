@@ -1,4 +1,19 @@
 <script>
+
+  /**
+   * Composant Success pour l'affichage d'un message de succès.
+   *
+   * @module Success
+   *
+   * @requires svelte - Pour l'utilisation des hooks de cycle de vie de Svelte et des transitions.
+   * @requires ../lib/store - Pour l'accès au store de l'application.
+   *
+   * @property {Object} getMainSuccess - Les informations de succès à afficher.
+   * @property {number} timeout - Le délai avant que le message de succès ne disparaisse.
+   *
+   * @function cancelMainSuccess - Annule l'affichage du message de succès.
+   */
+
   import { mainSuccess, showTimeoutInfo } from '../lib/store'
   import { onDestroy } from 'svelte'
   import { fade } from 'svelte/transition'

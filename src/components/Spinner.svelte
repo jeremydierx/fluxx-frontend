@@ -1,5 +1,19 @@
 <script>
 
+  /**
+   * Composant Spinner pour l'affichage d'un indicateur de chargement.
+   *
+   * @module Spinner
+   *
+   * @requires ../lib/store - Pour l'accès au store de l'application.
+   *
+   * @property {string} type - Le type de spinner à afficher.
+   * @property {string} size - La taille du spinner.
+   * @property {string} color - La couleur du spinner.
+   * @property {boolean} forceLoading - Force l'affichage du spinner même si aucune requête n'est en cours.
+   * @property {string} svgColor - La couleur du SVG du spinner.
+   */
+
 import { isLoading } from '../lib/store'
 
   /**

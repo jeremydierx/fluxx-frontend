@@ -246,7 +246,21 @@ export const getUser = async function (id) {
   return data
 }
 
-// modification d’un utilisateur au backend pour modification
+/**
+ * Envoie une requête PUT pour mettre à jour les informations d'un utilisateur.
+ * Cette fonction prend en entrée les nouvelles informations de l'utilisateur
+ * et un booléen indiquant si le mot de passe doit être envoyé par email, puis
+ * envoie une requête PUT à l'API backend. Si la requête est réussie, les
+ * informations de l'utilisateur sont mises à jour.
+ *
+ * @async
+ * @function updateUser
+ * @param {Object} user - Les nouvelles informations de l'utilisateur.
+ * @param {boolean} sendPasswordByEmail - Indique si le mot de passe doit être
+ * envoyé par email.
+ * @returns {Promise<Object>} Les données de la réponse, qui peuvent inclure
+ * des informations de succès ou des informations d'erreur.
+ */
 export const updateUser = async function (user, sendPasswordByEmail = false) {
   isLoading.set(true)
   const options = getRequestOptions('PUT', true)

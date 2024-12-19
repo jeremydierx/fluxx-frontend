@@ -36,12 +36,12 @@
 
 <style lang="scss">
 
-  @import '../style/variables';
+  @use '../style/variables' as v;
 
   .error-content {
     width: 100%;
     position: fixed;
-    top: $header-height;
+    top: v.$header-height;
     left: 0px;
     z-index: 100;
     padding: 1.2rem;
@@ -49,12 +49,12 @@
     border-radius: unset;
     border: none;
     margin: 0;
-    height: $info-bar-height;
-    line-height: $info-bar-height;
-    background-color: $clr-red-error;
+    height: v.$info-bar-height;
+    line-height: v.$info-bar-height;
+    background-color: v.$clr-red-error;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
-    color: $clr-red-error-dark;
+    color: v.$clr-red-error-dark;
     font-size: 1.3rem;
   }
 

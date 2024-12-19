@@ -90,10 +90,10 @@
 
 <style lang="scss">
 
-  @import '../../style/variables';
+  @use '../../style/variables' as v;
 
   .btn {
-    background-color: $clr-blue;
+    background-color: v.$clr-blue;
     width: 100%;
     margin-top: 20px;
     border-radius: 5px;
@@ -125,11 +125,11 @@
       width: 100%;
     }
     label {
-      color: $clr-grey;
+      color: v.$clr-grey;
     }
     input {
       padding: 5px;
-      border : 1px solid $clr-grey-light;
+      border : 1px solid v.$clr-grey-light;
     }
   }
 

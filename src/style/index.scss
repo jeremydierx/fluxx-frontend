@@ -1,7 +1,11 @@
-@import 'reset';
-@import 'variables';
-@import 'icons';
-@import url('https://fonts.googleapis.com/css2?family=Gruppo&family=Montserrat:wght@100;200;300;400;500;600;900&family=Shantell+Sans:wght@300&display=swap');
+@use 'reset';
+@use 'variables' as v;
+@use 'bootstrap-icons.scss';
+
+@font-face {
+  font-family: 'Gruppo';
+  src: url('../fonts/Gruppo-Regular.ttf') format('truetype');
+}
 
 /**
  * HACK ZOOM SUR IOS
@@ -41,10 +45,29 @@ html {
 
 body {
   position: relative;
-  background-color: $clr-app-bg;
-  color: $clr-app-text;
+  background-color: v.$clr-app-bg;
+  color: v.$clr-app-text;
   * {
     hyphens: none;
     -webkit-hyphens : none;
+  }
+}
+
+.text-with-icon {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  .icon {
+    font-size: 20px;
+    color: v.$clr-app-text;
+  }
+  .text span {
+    font-family: 'PT Sans Bold', sans-serif;
+    font-size: 14px;
+    color: v.$clr-app-text;
+    a {
+      color: v.$clr-app-text;
+      text-decoration: none;
+    }
   }
 }

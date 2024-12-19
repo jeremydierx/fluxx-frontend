@@ -1,4 +1,3 @@
-
 /**
  * Configuration de Vite pour le projet.
  *
@@ -20,15 +19,24 @@ import { defineConfig } from 'vite'
 import { svelte } from '@sveltejs/vite-plugin-svelte'
 import fs from 'fs'
 
-// https://vitejs.dev/config/
-export default defineConfig({
+const options = {
   server: {
-    port: 5011,
+    port: 5041,
     https: {
-      cert: fs.readFileSync('/home/user/dev-certificates/localhost.crt'),
-      key: fs.readFileSync('/home/user/dev-certificates/localhost.key')
+      cert: fs.readFileSync('/home/user/Dev/dev-certificates/localhost.crt'),
+      key: fs.readFileSync('/home/user/Dev/dev-certificates/localhost.key')
     }
   },
   plugins: [svelte()],
-  assetsInclude: ['**/*.ttf']
-})
+  assetsInclude: ['**/*.ttf'],
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: 'modern'
+      }
+    }
+  }
+}
+
+// https://vitejs.dev/config/
+export default defineConfig(options)

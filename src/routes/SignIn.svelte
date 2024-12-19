@@ -43,10 +43,10 @@
 
 <style lang="scss">
 
-  @import '../style/variables';
+  @use '../style/variables' as v;
 
   .btn {
-    background-color: $clr-blue;
+    background-color: v.$clr-blue;
     width: 100%;
     margin-top: 20px;
     border-radius: 5px;
@@ -86,7 +86,7 @@
       border-radius: 3px;
       font-family: Arial, Helvetica, sans-serif;
       height: 40px;
-      border: solid 1px $clr-grey-light;
+      border: solid 1px v.$clr-grey-light;
     }
   }
 
@@ -94,7 +94,7 @@
     margin-top: 20px;
     text-align: center;
     a {
-      color: $clr-blue;
+      color: v.$clr-blue;
       text-decoration: none;
     }
   }

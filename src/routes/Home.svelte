@@ -12,7 +12,7 @@
 
 <style lang="scss">
 
-  @import '../style/variables';
+  @use '../style/variables' as v;
 
 </style>
 

@@ -51,12 +51,12 @@
 
 <style lang="scss">
 
-  @import '../style/variables';
+  @use '../style/variables' as v;
 
   .success-content {
     width: 100%;
     position: fixed;
-    top: $header-height;
+    top: v.$header-height;
     left: 0px;
     z-index: 100;
     padding: 1.2rem;
@@ -64,12 +64,12 @@
     margin: 0;
     border: none;
     border-radius: unset;
-    height: $info-bar-height;
-    line-height: $info-bar-height;
-    background-color: $clr-green-success;
+    height: v.$info-bar-height;
+    line-height: v.$info-bar-height;
+    background-color: v.$clr-green-success;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: normal;
-    color: $clr-green-success-dark;
+    color: v.$clr-green-success-dark;
     font-size: 1.3rem;
   }
 

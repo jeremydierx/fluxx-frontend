@@ -18,7 +18,7 @@
 
 <style lang="scss">
 
-  @import '../style/variables';
+  @use '../style/variables' as v;
 
   [class^="icon-"] {
     margin-right: 5px;
@@ -34,11 +34,55 @@
 <h1>Menu</h1>
 <ul>
   {#if $userAuthState.isAuth }
-    <li><span class="icon-house-door"></span><a href="/#/admin">Accueil</a></li>
-    <li><span class="icon-person"></span><a href="/#/admin/my-account">Mon compte</a></li>
-    <li><span class="icon-power"></span><a on:click|preventDefault={signOut} href="/">Deconnexion</a></li>
+    <li>
+      <div class="text-with-icon">
+        <div class="icon">
+          <i class="bi-house-door"></i>
+        </div>
+        <div class="text">
+          <span><a href="/#/admin">Accueil</a></span>
+        </div>
+      </div>
+    <li>
+      <div class="text-with-icon">
+        <div class="icon">
+          <i class="bi-person"></i>
+        </div>
+        <div class="text">
+          <span><a href="/#/admin/my-account">Mon compte</a></span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="text-with-icon">
+        <div class="icon">
+          <i class="bi-box-arrow-right"></i>
+        </div>
+        <div class="text">
+          <span><a on:click|preventDefault={signOut} href="/">Deconnexion</a></span>
+        </div>
+      </div>
+    </li>
   {:else}
-  <li><span class="icon-house-door"></span><a href="/">Accueil</a></li>
-    <li><span class="icon-power"></span><a href="/#/sign-in">Connexion</a></li>
+    <li>
+      <div class="text-with-icon">
+        <div class="icon">
+          <i class="bi-house-door"></i>
+        </div>
+        <div class="text">
+          <span><a href="/">Accueil</a></span>
+        </div>
+      </div>
+    </li>
+    <li>
+      <div class="text-with-icon">
+        <div class="icon">
+          <i class="bi-box-arrow-in-right"></i>
+        </div>
+        <div class="text">
+          <span><a href="/#/sign-in">Connexion</a></span>
+        </div>
+      </div>
+    </li>
   {/if}
 </ul>

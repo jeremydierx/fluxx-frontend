@@ -20,10 +20,6 @@
 
   @use '../style/variables' as v;
 
-  [class^="icon-"] {
-    margin-right: 5px;
-  }
-
   li {
     list-style: none;
     margin: 0;
